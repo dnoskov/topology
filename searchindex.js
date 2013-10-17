@@ -1,1 +1,1 @@
-Search.setIndex({titles:["Welcome to topology&#8217;s documentation!"],objects:{},objtypes:{},filenames:["index"],objnames:{},terms:{index:0,document:0,welcom:0,search:0,tabl:0,page:0,indic:0,topolog:0,content:0,modul:0}})
+Search.setIndex({titles:["Welcome to Topology&#8217;s documentation!"],terms:{index:0,search:0,welcom:0,modul:0,document:0,topolog:0,page:0,tabl:0,content:0,indic:0},filenames:["index"],objtypes:{},objnames:{},objects:{}})
