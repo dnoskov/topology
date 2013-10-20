@@ -194,8 +194,8 @@
       .. math::
 	 \forall (x_{\omega_\sup}, y_{\omega_\sup}) \in \omega_\sup \;
 	 \exists \omega_i \in \Omega_1 \mid (x_{\omega_\sup},
-	 y_{\omega_\sup}) \in \omega_i \Rightarrow
-	 (x_{\omega_\sup}, y_{\omega_\sup}) \in \bigcup \Omega_1 \Rightarrow
+	 y_{\omega_\sup}) \in \omega_i \Rightarrow \\
+	 \Rightarrow (x_{\omega_\sup}, y_{\omega_\sup}) \in \bigcup \Omega_1 \Rightarrow
 	 \omega_\sup \subset \bigcup \Omega_1
 
       Итак,
