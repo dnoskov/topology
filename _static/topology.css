@@ -1,0 +1,60 @@
+.footer {
+    display: none;
+}
+
+.sphinxsidebar {
+    display: none;
+}
+
+.related {
+    display: none;
+}
+
+.document {
+    margin: 0 20%;
+}
+
+.admonition {
+    border: 1px solid #ddd;
+    background: #eee;
+    margin: 10px;
+    padding: 10px;
+}
+
+.admonition-title {
+    font-weight: bold;
+}
+
+.proof {
+    quotes: "▷" "◁";
+}
+
+.proof:before {
+    content: open-quote;
+}
+
+.proof:after {
+    content: close-quote;
+}
+
+.proof:first-child {
+    display: inline;
+}
+
+.proof:last-child {
+    display: inline;
+}
+
+
+.rubric {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.headerlink {
+    display: none;
+}
+
+.headerlink:hover {
+    display: inline;
+}

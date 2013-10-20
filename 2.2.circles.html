@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +9,7 @@
     
     <title>Топология на кругах &mdash; Topology 0.0.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/topology.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -53,100 +52,221 @@
 <p>Пусть <span class="math">\(X\)</span> есть плоскость. Является ли топологической структурой
 набор множеств, состоящих из <span class="math">\(\varnothing\)</span>, <span class="math">\(X\)</span> и открытых
 кругов с центром в начале координат и всевозможными радиусами?</p>
-<p class="rubric">Решение</p>
-<div class="admonition- admonition">
-<p class="first admonition-title">Дано</p>
-<p><span class="math">\(X = \mathbb{R}\)</span></p>
-<p><span class="math">\(\Omega = \{\varnothing, X\} \cup \{C\}\)</span>, где</p>
-<p class="last"><span class="math">\(C=\{\,(x,y)\; |\; x^2+y^2&lt;r^2,\; r \in \mathbb{R}_{\geqslant0}\,\}\)</span></p>
-</div>
-<p>Проверим, выполняются ли аксиомы топологического пространства для данного <span class="math">\(\Omega\)</span>.</p>
-<ol class="arabic">
-<li><p class="first">Выберем <span class="math">\(\forall x_1, x_2 \in \Omega\)</span>.</p>
-<p>Пусть</p>
-<div class="math">
-\[\begin{split}x_1=\{\,(x,y)\; |\; x^2+y^2&lt;r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
-x_2=\{\,(x,y)\; |\; x^2+y^2&lt;r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.\end{split}\]</div>
-<p>Без ограничения общности можем считать, что <span class="math">\(r_1&gt;r_2\)</span>, тогда:</p>
-<div class="math">
-\[\begin{split}x_1 \cup x_2 = \{\, (x,y) \mid (x,y) \in x_1 \vee (x,y) \in x_2\} = \\
-= \{ \, (x,y) \mid x^2+y^2&lt;r_1^2 \vee x^2+y^2&lt;r_2^2\,\} = \\
-= \{\, (x,y) \mid x^2+y^2&lt;r_1^2 \,\} = x_1 \in \Omega\end{split}\]</div>
-<p>Аксиома выполняется для любых двух множеств из <span class="math">\(\Omega\)</span>
-поэтому она будет выполняться и для любых объединений конечных
-количеств множеств.</p>
-<p>Рассмотрим объединения бесконечных количеств множеств.</p>
-<p>Пусть <span class="math">\(C_1 \subset \Omega\)</span> — бесконечное подмножество
-<span class="math">\(\Omega\)</span>, а <span class="math">\(R_1\)</span> — множество радиусов кругов из
-<span class="math">\(C_1\)</span>.</p>
-<p>Возможны два случая:</p>
-<ol class="arabic">
-<li><p class="first"><span class="math">\(R_1\)</span> неограничено сверху.</p>
-<p>Тогда <span class="math">\(\forall r_1 \in R_1 \; \exists r_2 \in R_1 \mid r_2&gt;r_1\)</span>, и поэтому <span class="math">\(\bigcup C_1 = X\)</span></p>
-</li>
-<li><p class="first"><span class="math">\(R_1\)</span> ограничено сверху.</p>
+<div class="section" id="id3">
+<h2>Напоминание <a class="footnote-reference" href="#id9" id="id2">[0]</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Для дальнейшего вспомним необходимые сведения из анализа.</p>
 <div class="admonition- admonition">
 <p class="first admonition-title">Определение</p>
 <dl class="docutils">
 <dt><strong>Точной верхней гранью множества</strong> <span class="math">\(S\)</span></dt>
-<dd><p class="first last">называется наименьшая из его верхних граней.</p>
-</dd>
-</dl>
-<p>Или, в символической записи <a class="footnote-reference" href="#id4" id="id2">[1]</a> :</p>
-<div class="math">
+<dd><p class="first">называется наименьшая из его верхних граней.</p>
+<p>Или, в символической записи <a class="footnote-reference" href="#id10" id="id4">[1]</a> :</p>
+<div class="last math">
 \[\begin{split}c=\sup\{S\} := \left\{ \begin{array}{lr}
 \forall s \in S \rightarrow c\geqslant s   &amp; (1)\\
 \forall a &lt; c \; \exists s \in S \mid s&gt;a  &amp; (2)
 \end{array}\right.\end{split}\]</div>
-<p>В определении вместо условия <span class="math">\((2)\)</span> можно пользоваться <a class="footnote-reference" href="#id5" id="id3">[2]</a> и <em>критерием точной верхней грани</em>:</p>
+</dd>
+</dl>
+<p>В определении вместо условия <span class="math">\((2)\)</span> можно пользоваться <a class="footnote-reference" href="#id11" id="id5">[2]</a> и
+<em>критерием точной верхней грани</em>:</p>
 <div class="last math">
 \[\begin{split}\begin{array}{lr}
-   \forall \varepsilon &gt; 0 \; \exists s \in S \mid c-s&lt;\varepsilon &amp; (2)'
+\forall \varepsilon &gt; 0 \; \exists s \in S \mid c-s&lt;\varepsilon &amp; (2)'
 \end{array}\end{split}\]</div>
+</div>
+<div class="admonition- admonition">
+<p class="first admonition-title">Определение</p>
+<dl class="last docutils">
+<dt><strong>Сечением в области рациональных (действительных) чисел</strong></dt>
+<dd><p class="first">называется всякое разбиение множества рациональных (действительных)
+чисел на два непересекающихся множества (<strong>класса</strong>)
+так, что элементы одного из них (<strong>нижнего</strong>) строго
+меньше элементов другого (<strong>верхнего</strong>).</p>
+<p>Или символьно <a class="footnote-reference" href="#id12" id="id6">[3]</a>:</p>
+<div class="last math">
+\[\begin{split}(A|B) := \{\,\mathbb{Q} \; (\mathbb{R})\;= A \sqcup B \,\}
+\wedge \{\,\forall a \in A \; \forall b \in B \rightarrow
+a&lt;b\,\}\end{split}\]</div>
+</dd>
+</dl>
+</div>
+<div class="admonition- admonition">
+<p class="first admonition-title">Основная теорема Дедекинда</p>
+<p>Для всякого сечения в области действительных чисел <span class="math">\((A|B)\)</span>
+существует число <span class="math">\(\beta\)</span>, которое производит это сечение. Это
+число <span class="math">\(\beta\)</span> будет:</p>
+<ol class="arabic simple">
+<li>либо наибольшим в нижнем классе A</li>
+<li>либо наименьшим в верхнем классе B</li>
+</ol>
+<div class="proof last container">
+Доказательство см. в Фихтенгольце, Зориче и т.п.</div>
 </div>
 <div class="admonition- admonition">
 <p class="first admonition-title">Теорема</p>
 <p>Если множество ограничено сверху, то оно имеет точную верхнюю грань.</p>
 <div class="proof last container">
-<p>Пусть множество <span class="math">\(S\)</span> ограничено сверху, тогда <span class="math">\(\forall s \in S \; \exists b \geqslant s\)</span>.</p>
-<p>Рассмотрим множество <span class="math">\(B\)</span> всех <span class="math">\(b\)</span> и множество
-<span class="math">\(A=\{\, a \in \mathbb{R} \mid \forall b \in B
-\rightarrow a &lt; b \,\}\)</span></p>
+<p>Пусть множество <span class="math">\(S\)</span> ограничено сверху, тогда возможны два случая:</p>
+<ol class="arabic">
+<li><p class="first">В <span class="math">\(S\)</span> есть наибольший элемент.</p>
+<p>Пусть <span class="math">\(M\)</span> — наибольший элемент множества <span class="math">\(S\)</span>, тогда:</p>
+<div class="math">
+\[\begin{split}\begin{array}{lr}\forall s \in S \rightarrow M \geqslant s &amp; (1)\\
+\forall a &lt; M \; \exists s_0 \in S \mid s_0 &gt; a &amp; (2)
+\end{array}\end{split}\]</div>
+<p>Действительно, если взять <span class="math">\(s_0=M\)</span>, то условие
+<span class="math">\((2)\)</span> очевидно. Т.о. <span class="math">\(M = \sup\{S\}\)</span></p>
+</li>
+<li><p class="first">В <span class="math">\(S\)</span> нет наибольшего элемента. Рассмотрим множества
+<span class="math">\(B\)</span> всех верхних граней множества <span class="math">\(S\)</span> и <span class="math">\(A\)</span>
+— всех остальных чисел:</p>
+<div class="math">
+\[\begin{split}B=\{\, b \in \mathbb{R} \mid \forall s \in S \rightarrow b \geqslant s \,\} \\
+A=\{\, a \in \mathbb{R} \mid \forall b \in B \rightarrow a &lt; b \,\}\end{split}\]</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Т.к. любое число либо является верхней гранью <span class="math">\(S\)</span>, либо
+не является ею, эти множества образуют сечение в области
+действительных чисел <span class="math">\((A|B)\)</span>.</p>
+<p>Т.к. в <span class="math">\(S\)</span> нет наибольшего элемента, то <span class="math">\(\forall s
+\in S \; \forall b \in B \rightarrow b&gt;s\)</span>. Поэтому <span class="math">\(S
+\subset A\)</span>.</p>
+<p>Покажем, что в <span class="math">\(A\)</span> нет элементов, превосходящих все
+элементы из <span class="math">\(S\)</span>.</p>
+<p>Пусть <span class="math">\(\exists a \in A \mid \forall s \in S \rightarrow
+a &gt; s\)</span>, тогда, по определению <span class="math">\(B\)</span>, <span class="math">\(\exists b \in
+B \mid a = b\)</span>. Это противоречит определению множества
+<span class="math">\(A\)</span>. Поэтому в <span class="math">\(A\)</span> нет элементов, превосходящих
+все элементы из <span class="math">\(S\)</span>.</p>
+<p>Следовательно, в <span class="math">\(A\)</span>, как и в <span class="math">\(S\)</span>, тоже нет
+наибольшего элемента.</p>
+<p>По Основной теореме Дедекинда, это означает, что сечение
+<span class="math">\((A|B)\)</span> произведено числом <span class="math">\(\beta\)</span>, наименьшим в
+верхнем классе <span class="math">\(B\)</span>.</p>
+<p>Но <span class="math">\(B\)</span> — это, по определению, множество всех верхних
+граней множества <span class="math">\(S\)</span>, а <span class="math">\(\beta\)</span> — наименьшая
+верхняя грань в нём.</p>
+<p>По определению точной верхней грани это означает, что
+<span class="math">\(\beta = \sup\{S\}\)</span></p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<span id="id8"></span><h2>Решение<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="admonition- admonition">
-<p class="first admonition-title">Определение</p>
-<dl class="docutils">
-<dt><strong>Сечением в области рациональных чисел</strong></dt>
-<dd><p class="first last">называется всякое разбиение множества рациональных
-чисел на два непересекающихся множества (<strong>класса</strong>)
-так, что элементы одного из них (<strong>нижнего</strong>) строго
-меньше элементов другого (<strong>верхнего</strong>).</p>
-</dd>
-</dl>
-<p>Или символьно:</p>
-<div class="last math">
-\[\begin{split}(A|B) := \{\,\mathbb{Q} = A \sqcup B \,\} \wedge \{\,\forall a \in A \; \forall b \in B \rightarrow a&lt;b\,\}\end{split}\]</div>
+<p class="first admonition-title">Дано</p>
+<p><span class="math">\(X = \mathbb{R}^2\)</span></p>
+<p><span class="math">\(\Omega = \{\varnothing, X\} \cup \{\omega_i\}\)</span>, где</p>
+<p class="last"><span class="math">\(\omega_i=\{\,(x,y)\; |\; x^2+y^2&lt;r^2,\; r \in \mathbb{R}_{\geqslant0}\,\}\)</span></p>
 </div>
-<p>Т.о. мы получаем сечение в области рациональных чисел <span class="math">\((A|B)\)</span>.</p>
-</div>
-</div>
+<p>Проверим, выполняются ли аксиомы топологического пространства для
+данного <span class="math">\(\Omega\)</span>.</p>
+<ol class="arabic">
+<li><p class="first">Выберем <span class="math">\(\forall \omega_1, \omega_2 \in \Omega\)</span>.</p>
+<p>Пусть</p>
+<div class="math">
+\[\begin{split}\omega_1=\{\,(x,y)\; |\; x^2+y^2&lt;r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
+\omega_2=\{\,(x,y)\; |\; x^2+y^2&lt;r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.\end{split}\]</div>
+<p>Без ограничения общности можем считать, что <span class="math">\(r_1&gt;r_2\)</span>, тогда:</p>
+<div class="math">
+\[\begin{split}\omega_1 \cup \omega_2 = \{\, (x,y) \mid (x,y) \in \omega_1 \vee (x,y) \in \omega_2\} = \\
+= \{ \, (x,y) \mid x^2+y^2&lt;r_1^2 \vee x^2+y^2&lt;r_2^2\,\} = \\
+= \{\, (x,y) \mid x^2+y^2&lt;r_1^2 \,\} = \omega_1 \in \Omega\end{split}\]</div>
+<p>Аксиома выполняется для любых двух множеств из <span class="math">\(\Omega\)</span>
+поэтому она будет выполняться и для любых объединений конечных
+количеств множеств из <span class="math">\(\Omega\)</span>.</p>
+<p>Рассмотрим объединения бесконечных количеств множеств.</p>
+<p>Пусть <span class="math">\(\Omega_1 \subset \Omega\)</span> — бесконечное подмножество в
+<span class="math">\(\Omega\)</span>, а <span class="math">\(R_1\)</span> — множество радиусов кругов из
+<span class="math">\(\Omega_1\)</span>.</p>
+<p>Возможны два случая:</p>
+<ol class="arabic">
+<li><p class="first"><span class="math">\(R_1\)</span> неограничено сверху.</p>
+<p>Тогда <span class="math">\(\forall r_1 \in R_1 \; \exists r_2 \in R_1 \mid
+r_2&gt;r_1\)</span>, и поэтому <span class="math">\(\bigcup \Omega_1 = X\)</span></p>
+</li>
+<li><p class="first"><span class="math">\(R_1\)</span> ограничено сверху.</p>
+<p>Тогда, по теореме о существовании точной верхней грани,
+<span class="math">\(\exists \sup \{R_1\} \in \mathbb{R}_{\geqslant
+0}\)</span>. Значит, <span class="math">\(\exists \omega_{\sup} = \{\, (x,y) \mid
+x^2+y^2&lt;\sup^2\{R_1\}\,\} \in \Omega\)</span>.</p>
+<p>Верно, что точки круга, радиус которого меньше, чем
+<span class="math">\(r_{\omega_\sup}=\sup\{R_1\}\)</span> лежат внутри круга, радиуса
+<span class="math">\(r_{\omega_\sup}\)</span>, т.е.:</p>
+<div class="math">
+\[\begin{split}\forall r_{\omega_i}&lt;\sup\{R_1\}, \;
+\omega_i = \{\, (x,y) \mid x^2+y^2&lt;r_{\omega_i}\,\} \subset \omega_\sup
+\Rightarrow \bigcup \Omega_1 \subset \omega_\sup\end{split}\]</div>
+<p>Верно также, что</p>
+<div class="math">
+\[\forall (x_{\omega_\sup}, y_{\omega_\sup}) \in \omega_\sup \;
+\exists \omega_i \in \Omega_1 \mid (x_{\omega_\sup},
+y_{\omega_\sup}) \in \omega_i \Rightarrow
+(x_{\omega_\sup}, y_{\omega_\sup}) \in \bigcup \Omega_1 \Rightarrow
+\omega_\sup \subset \bigcup \Omega_1\]</div>
+<p>Итак,</p>
+<div class="math">
+\[\bigcup \Omega_1 \subset \omega_\sup \wedge \omega_\sup \subset \bigcup \Omega_1
+\Rightarrow \bigcup \Omega_1 = \omega_\sup \in \Omega\]</div>
 </li>
 </ol>
+<p>Первая аксиома выполняется.</p>
+</li>
+<li><p class="first">Выберем <span class="math">\(\forall \omega_1, \omega_2 \in \Omega\)</span>.</p>
+<p>Пусть</p>
+<div class="math">
+\[\begin{split}\omega_1=\{\,(x,y)\; |\; x^2+y^2&lt;r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
+\omega_2=\{\,(x,y)\; |\; x^2+y^2&lt;r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.\end{split}\]</div>
+<p>Без ограничения общности можем считать, что <span class="math">\(r_1&gt;r_2\)</span>, тогда:</p>
+<div class="math">
+\[\begin{split}\omega_1 \cap \omega_2 = \{\, (x,y) \mid (x,y) \in \omega_1 \wedge (x,y) \in \omega_2\} = \\
+= \{ \, (x,y) \mid x^2+y^2&lt;r_1^2 \wedge x^2+y^2&lt;r_2^2\,\} = \\
+= \{\, (x,y) \mid x^2+y^2&lt;r_2^2 \,\} = \omega_2 \in \Omega\end{split}\]</div>
+<p>Аксиома выполняется для любых двух множеств из <span class="math">\(\Omega\)</span>
+поэтому она будет выполняться и для любых пересечений конечных
+количеств множеств из <span class="math">\(\Omega\)</span>.</p>
+<p>Вторая аксиома тоже выполняется.</p>
+</li>
+<li><p class="first"><span class="math">\(\varnothing, X \in \Omega\)</span> по условию.</p>
 </li>
 </ol>
+<p>Т.о. <span class="math">\((X, \Omega)\)</span> — топологическая структура на <span class="math">\(X\)</span>.</p>
 <p class="rubric">Сноски</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>&#8220;<span class="math">\(\rightarrow\)</span>&#8221; означает &#8220;выполняется&#8221;</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[0]</a></td><td>К этому разделу лучше обращаться по мере чтения <a class="reference internal" href="#id7"><em>Решения</em></a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>как ни странно ☺</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>&#8220;<span class="math">\(\rightarrow\)</span>&#8221; означает &#8220;выполняется&#8221;</td></tr>
 </tbody>
 </table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>как ни странно ☺. В том случае, когда <span class="math">\(c \in S\)</span>,
+достаточно положить <span class="math">\(s=c\)</span>, а если <span class="math">\(c \not\in S\)</span>, тогда
+мы всегда можем найти необходимое <span class="math">\(s\)</span>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[3]</a></td><td><p class="first"><span class="math">\(\bigsqcup\)</span> — символ разбиения множеств</p>
+<div class="last math">
+\[X = \bigsqcup\limits_{i \in I} Y_i :=
+\left\{ \, X=\bigcup\limits_{i \in I} Y_i \,\right\}\wedge
+\left\{ \, \forall Y_{i}, Y_{j} \rightarrow Y_i \cap Y_j = \varnothing, \; \forall i,j \in I \, \right\}\]</div>
+</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -155,6 +275,15 @@ x_2=\{\,(x,y)\; |\; x^2+y^2&lt;r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.\end
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Топология на кругах</a><ul>
+<li><a class="reference internal" href="#id3">Напоминание </a></li>
+<li><a class="reference internal" href="#id7">Решение</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to Topology&#8217;s documentation!</a></p>

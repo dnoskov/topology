@@ -6,105 +6,246 @@
 набор множеств, состоящих из :math:`\varnothing`, :math:`X` и открытых
 кругов с центром в начале координат и всевозможными радиусами?
 
-.. rubric:: Решение
+Напоминание [0]_
+================
+
+Для дальнейшего вспомним необходимые сведения из анализа.
+
+.. admonition:: Определение
+		      
+   **Точной верхней гранью множества** :math:`S`
+     называется наименьшая из его верхних граней.
+
+     Или, в символической записи [1]_ :
+
+     .. math::
+	c=\sup\{S\} := \left\{ \begin{array}{lr}
+	\forall s \in S \rightarrow c\geqslant s   & (1)\\
+	\forall a < c \; \exists s \in S \mid s>a  & (2)
+	\end{array}\right.
+
+   В определении вместо условия :math:`(2)` можно пользоваться [2]_ и
+   *критерием точной верхней грани*:
+
+   .. math::
+      \begin{array}{lr}
+      \forall \varepsilon > 0 \; \exists s \in S \mid c-s<\varepsilon & (2)'
+      \end{array}
+
+
+.. admonition:: Определение
+	
+   **Сечением в области рациональных (действительных) чисел** 
+     называется всякое разбиение множества рациональных (действительных)
+     чисел на два непересекающихся множества (**класса**)
+     так, что элементы одного из них (**нижнего**) строго
+     меньше элементов другого (**верхнего**).
+		
+     Или символьно [3]_:
+
+     .. math::
+	(A|B) := \{\,\mathbb{Q} \; (\mathbb{R})\;= A \sqcup B \,\}
+	\wedge \{\,\forall a \in A \; \forall b \in B \rightarrow
+	a<b\,\}
+
+
+.. admonition:: Основная теорема Дедекинда
+   
+   Для всякого сечения в области действительных чисел :math:`(A|B)`
+   существует число :math:`\beta`, которое производит это сечение. Это
+   число :math:`\beta` будет:
+
+   1. либо наибольшим в нижнем классе A
+
+   2. либо наименьшим в верхнем классе B
+
+   .. container:: proof
+      
+      Доказательство см. в Фихтенгольце, Зориче и т.п.
+
+
+.. admonition:: Теорема
+
+   Если множество ограничено сверху, то оно имеет точную верхнюю грань.
+	 
+   .. container:: proof
+
+      Пусть множество :math:`S` ограничено сверху, тогда возможны два случая:
+
+      1. В :math:`S` есть наибольший элемент.
+	 
+	 Пусть :math:`M` — наибольший элемент множества :math:`S`, тогда:
+
+	 .. math::
+	    \begin{array}{lr}\forall s \in S \rightarrow M \geqslant s & (1)\\
+	    \forall a < M \; \exists s_0 \in S \mid s_0 > a & (2)
+	    \end{array}
+
+	 Действительно, если взять :math:`s_0=M`, то условие
+	 :math:`(2)` очевидно. Т.о. :math:`M = \sup\{S\}`
+
+      2. В :math:`S` нет наибольшего элемента. Рассмотрим множества
+         :math:`B` всех верхних граней множества :math:`S` и :math:`A`
+         — всех остальных чисел:
+
+	 .. math::
+	    B=\{\, b \in \mathbb{R} \mid \forall s \in S \rightarrow b \geqslant s \,\} \\
+	    A=\{\, a \in \mathbb{R} \mid \forall b \in B \rightarrow a < b \,\}
+
+	Т.к. любое число либо является верхней гранью :math:`S`, либо
+	не является ею, эти множества образуют сечение в области
+	действительных чисел :math:`(A|B)`.
+
+	Т.к. в :math:`S` нет наибольшего элемента, то :math:`\forall s
+	\in S \; \forall b \in B \rightarrow b>s`. Поэтому :math:`S
+	\subset A`.
+
+	Покажем, что в :math:`A` нет элементов, превосходящих все
+	элементы из :math:`S`.
+
+	Пусть :math:`\exists a \in A \mid \forall s \in S \rightarrow
+	a > s`, тогда, по определению :math:`B`, :math:`\exists b \in
+	B \mid a = b`. Это противоречит определению множества
+	:math:`A`. Поэтому в :math:`A` нет элементов, превосходящих
+	все элементы из :math:`S`.
+
+	Следовательно, в :math:`A`, как и в :math:`S`, тоже нет
+	наибольшего элемента.
+
+	По Основной теореме Дедекинда, это означает, что сечение
+	:math:`(A|B)` произведено числом :math:`\beta`, наименьшим в
+	верхнем классе :math:`B`.
+
+	Но :math:`B` — это, по определению, множество всех верхних
+	граней множества :math:`S`, а :math:`\beta` — наименьшая
+	верхняя грань в нём.
+
+	По определению точной верхней грани это означает, что
+	:math:`\beta = \sup\{S\}`
+
+.. _Решение:
+
+Решение
+=======
 
 .. admonition:: Дано
 
-   :math:`X = \mathbb{R}`
+   :math:`X = \mathbb{R}^2`
 
-   :math:`\Omega = \{\varnothing, X\} \cup \{C\}`, где
+   :math:`\Omega = \{\varnothing, X\} \cup \{\omega_i\}`, где
 
-   :math:`C=\{\,(x,y)\; |\; x^2+y^2<r^2,\; r \in \mathbb{R}_{\geqslant0}\,\}`
+   :math:`\omega_i=\{\,(x,y)\; |\; x^2+y^2<r^2,\; r \in \mathbb{R}_{\geqslant0}\,\}`
 
-Проверим, выполняются ли аксиомы топологического пространства для данного :math:`\Omega`.
+Проверим, выполняются ли аксиомы топологического пространства для
+данного :math:`\Omega`.
 
-1. Выберем :math:`\forall x_1, x_2 \in \Omega`.
+1. Выберем :math:`\forall \omega_1, \omega_2 \in \Omega`.
 
    Пусть 
 
    .. math::
    
-      x_1=\{\,(x,y)\; |\; x^2+y^2<r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
-      x_2=\{\,(x,y)\; |\; x^2+y^2<r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.
+      \omega_1=\{\,(x,y)\; |\; x^2+y^2<r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
+      \omega_2=\{\,(x,y)\; |\; x^2+y^2<r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.
 
    Без ограничения общности можем считать, что :math:`r_1>r_2`, тогда:
 
    .. math::
       
-      x_1 \cup x_2 = \{\, (x,y) \mid (x,y) \in x_1 \vee (x,y) \in x_2\} = \\
+      \omega_1 \cup \omega_2 = \{\, (x,y) \mid (x,y) \in \omega_1 \vee (x,y) \in \omega_2\} = \\
       = \{ \, (x,y) \mid x^2+y^2<r_1^2 \vee x^2+y^2<r_2^2\,\} = \\
-      = \{\, (x,y) \mid x^2+y^2<r_1^2 \,\} = x_1 \in \Omega
+      = \{\, (x,y) \mid x^2+y^2<r_1^2 \,\} = \omega_1 \in \Omega
 
    Аксиома выполняется для любых двух множеств из :math:`\Omega`
    поэтому она будет выполняться и для любых объединений конечных
-   количеств множеств.
+   количеств множеств из :math:`\Omega`.
 
    Рассмотрим объединения бесконечных количеств множеств.
 
-   Пусть :math:`C_1 \subset \Omega` — бесконечное подмножество
+   Пусть :math:`\Omega_1 \subset \Omega` — бесконечное подмножество в
    :math:`\Omega`, а :math:`R_1` — множество радиусов кругов из
-   :math:`C_1`.
+   :math:`\Omega_1`.
 
    Возможны два случая:
 
    1) :math:`R_1` неограничено сверху.
       
-      Тогда :math:`\forall r_1 \in R_1 \; \exists r_2 \in R_1 \mid r_2>r_1`, и поэтому :math:`\bigcup C_1 = X`
+      Тогда :math:`\forall r_1 \in R_1 \; \exists r_2 \in R_1 \mid
+      r_2>r_1`, и поэтому :math:`\bigcup \Omega_1 = X`
 
    2) :math:`R_1` ограничено сверху.
 
-      Для дальнейшего вспомним необходимые сведения из анализа.
+      Тогда, по теореме о существовании точной верхней грани,
+      :math:`\exists \sup \{R_1\} \in \mathbb{R}_{\geqslant
+      0}`. Значит, :math:`\exists \omega_{\sup} = \{\, (x,y) \mid
+      x^2+y^2<\sup^2\{R_1\}\,\} \in \Omega`.
 
-      .. admonition:: Определение
-		      
-	 **Точной верхней гранью множества** :math:`S`
-	  называется наименьшая из его верхних граней.
+      Верно, что точки круга, радиус которого меньше, чем
+      :math:`r_{\omega_\sup}=\sup\{R_1\}` лежат внутри круга, радиуса
+      :math:`r_{\omega_\sup}`, т.е.:
 
-	 Или, в символической записи [1]_ :
+      .. math::
+	 \forall r_{\omega_i}<\sup\{R_1\}, \;
+	 \omega_i = \{\, (x,y) \mid x^2+y^2<r_{\omega_i}\,\} \subset \omega_\sup
+	 \Rightarrow \bigcup \Omega_1 \subset \omega_\sup
 
-	 .. math::
-	    c=\sup\{S\} := \left\{ \begin{array}{lr}
-	    \forall s \in S \rightarrow c\geqslant s   & (1)\\
-	    \forall a < c \; \exists s \in S \mid s>a  & (2)
-	    \end{array}\right.
+      Верно также, что
 
-	 В определении вместо условия :math:`(2)` можно пользоваться [2]_ и *критерием точной верхней грани*:
+      .. math::
+	 \forall (x_{\omega_\sup}, y_{\omega_\sup}) \in \omega_\sup \;
+	 \exists \omega_i \in \Omega_1 \mid (x_{\omega_\sup},
+	 y_{\omega_\sup}) \in \omega_i \Rightarrow
+	 (x_{\omega_\sup}, y_{\omega_\sup}) \in \bigcup \Omega_1 \Rightarrow
+	 \omega_\sup \subset \bigcup \Omega_1
 
-	 .. math::
-	    \begin{array}{lr}
-	       \forall \varepsilon > 0 \; \exists s \in S \mid c-s<\varepsilon & (2)'
-	    \end{array}
+      Итак,
 
-      .. admonition:: Теорема
+      .. math::
+	 \bigcup \Omega_1 \subset \omega_\sup \wedge \omega_\sup \subset \bigcup \Omega_1
+	 \Rightarrow \bigcup \Omega_1 = \omega_\sup \in \Omega
 
-	 Если множество ограничено сверху, то оно имеет точную верхнюю грань.
-	 
-	 .. container:: proof
+   Первая аксиома выполняется.
 
-	    Пусть множество :math:`S` ограничено сверху, тогда :math:`\forall s \in S \; \exists b \geqslant s`.
-	    
-	    Рассмотрим множество :math:`B` всех :math:`b` и множество
-	    :math:`A=\{\, a \in \mathbb{R} \mid \forall b \in B
-	    \rightarrow a < b \,\}`
+2. Выберем :math:`\forall \omega_1, \omega_2 \in \Omega`.
 
-	    .. admonition:: Определение
-	
-	       **Сечением в области рациональных чисел** 
-                называется всякое разбиение множества рациональных
-	        чисел на два непересекающихся множества (**класса**)
-	        так, что элементы одного из них (**нижнего**) строго
-	        меньше элементов другого (**верхнего**).
-		
-	       Или символьно:
+   Пусть 
 
-	       .. math::
-		  (A|B) := \{\,\mathbb{Q} = A \sqcup B \,\} \wedge \{\,\forall a \in A \; \forall b \in B \rightarrow a<b\,\}
+   .. math::
+   
+      \omega_1=\{\,(x,y)\; |\; x^2+y^2<r_1^2,\; r_1 \in \mathbb{R}_{\geqslant0}\,\},\\
+      \omega_2=\{\,(x,y)\; |\; x^2+y^2<r_2^2,\; r_2 \in \mathbb{R}_{\geqslant0}\,\}.
 
-	    Т.о. мы получаем сечение в области рациональных чисел :math:`(A|B)`.
+   Без ограничения общности можем считать, что :math:`r_1>r_2`, тогда:
 
+   .. math::
+      
+      \omega_1 \cap \omega_2 = \{\, (x,y) \mid (x,y) \in \omega_1 \wedge (x,y) \in \omega_2\} = \\
+      = \{ \, (x,y) \mid x^2+y^2<r_1^2 \wedge x^2+y^2<r_2^2\,\} = \\
+      = \{\, (x,y) \mid x^2+y^2<r_2^2 \,\} = \omega_2 \in \Omega
+
+   Аксиома выполняется для любых двух множеств из :math:`\Omega`
+   поэтому она будет выполняться и для любых пересечений конечных
+   количеств множеств из :math:`\Omega`.
+
+   Вторая аксиома тоже выполняется.
+
+3. :math:`\varnothing, X \in \Omega` по условию.
+
+Т.о. :math:`(X, \Omega)` — топологическая структура на :math:`X`.
 
 .. rubric:: Сноски
 
+.. [0] К этому разделу лучше обращаться по мере чтения :ref:`Решения <Решение>`
+
 .. [1] ":math:`\rightarrow`" означает "выполняется"
 
-.. [2] как ни странно ☺
+.. [2] как ни странно ☺. В том случае, когда :math:`c \in S`,
+       достаточно положить :math:`s=c`, а если :math:`c \not\in S`, тогда
+       мы всегда можем найти необходимое :math:`s`.
+
+.. [3] :math:`\bigsqcup` — символ разбиения множеств
+
+       .. math::
+	  X = \bigsqcup\limits_{i \in I} Y_i :=
+          \left\{ \, X=\bigcup\limits_{i \in I} Y_i \,\right\}\wedge
+	  \left\{ \, \forall Y_{i}, Y_{j} \rightarrow Y_i \cap Y_j = \varnothing, \; \forall i,j \in I \, \right\}
